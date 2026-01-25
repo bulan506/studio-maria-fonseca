@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Alisado Orgánico",
+    "description": "Tratamiento 100% natural que alisa sin dañar, manteniendo la salud de tu cabello. Elimina el frizz hasta por 3 meses.",
+    "price": "$80-120",
+    "priceRange": {
+      "min": 80,
+      "max": 120
+    },
+    "icon": "leaf",
+    "duration": "2-3 horas",
+    "category": "tratamiento",
+    "popular": true,
+    "features": [
+      "100% ingredientes naturales",
+      "Sin químicos agresivos",
+      "Efecto hasta 3 meses",
+      "Incluye limpieza profunda"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Tratamiento de Células Madre",
+    "description": "Regeneración capilar avanzada para un cabello más fuerte y saludable. Revitaliza desde la raíz.",
+    "price": "$150-200",
+    "priceRange": {
+      "min": 150,
+      "max": 200
+    },
+    "icon": "dna",
+    "duration": "1.5 horas",
+    "category": "regeneracion",
+    "popular": true,
+    "features": [
+      "Tecnología de células madre",
+      "Reparación intensiva",
+      "Fortalece desde la raíz",
+      "Reduce la caída"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tratamiento Reparador Keratina",
+    "description": "Recupera la vitalidad de tu cabello dañado con nuestra fórmula exclusiva de keratina natural.",
+    "price": "$95-140",
+    "priceRange": {
+      "min": 95,
+      "max": 140
+    },
+    "icon": "heart",
+    "duration": "2 horas",
+    "category": "reparacion",
+    "popular": false,
+    "features": [
+      "Keratina 100% natural",
+      "Sella cutículas",
+      "Brillo intenso",
+      "Efecto inmediato"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Detox Capilar Profundo",
+    "description": "Limpieza profunda para eliminar residuos de químicos, cloro y contaminación acumulados.",
+    "price": "$60-90",
+    "priceRange": {
+      "min": 60,
+      "max": 90
+    },
+    "icon": "spa",
+    "duration": "1 hora",
+    "category": "limpieza",
+    "popular": false,
+    "features": [
+      "Elimina residuos químicos",
+      "Desintoxica cuero cabelludo",
+      "Prepara para otros tratamientos",
+      "Alivia picazón e irritación"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Corte de Puntas Especializado",
+    "description": "Corte personalizado según tu tipo de cabello y estructura facial para realzar tu belleza.",
+    "price": "$25-40",
+    "priceRange": {
+      "min": 25,
+      "max": 40
+    },
+    "icon": "cut",
+    "duration": "45 minutos",
+    "category": "corte",
+    "popular": true,
+    "features": [
+      "Análisis facial personalizado",
+      "Técnica dry cutting",
+      "Mantenimiento de capas",
+      "Asesoría de estilo"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Lavado y Planchado Premium",
+    "description": "Lavado con productos orgánicos y planchado profesional para un look impecable.",
+    "price": "$35-55",
+    "priceRange": {
+      "min": 35,
+      "max": 55
+    },
+    "icon": "water",
+    "duration": "1 hora",
+    "category": "estilismo",
+    "popular": true,
+    "features": [
+      "Productos orgánicos",
+      "Planchado protector",
+      "Brillo profesional",
+      "Sin daño térmico"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Planchado Profesional Express",
+    "description": "Planchado rápido y efectivo para eventos o días especiales con productos protectores.",
+    "price": "$30-50",
+    "priceRange": {
+      "min": 30,
+      "max": 50
+    },
+    "icon": "wind",
+    "duration": "30 minutos",
+    "category": "express",
+    "popular": false,
+    "features": [
+      "Protección térmica premium",
+      "Resultado duradero",
+      "Sin cita previa",
+      "Perfecto para eventos"
+    ]
+  }
+]

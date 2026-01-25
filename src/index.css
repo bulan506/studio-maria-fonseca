@@ -1,0 +1,78 @@
+/* Estilos globales adicionales si los necesitas */
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevenir zoom en iOS para inputs */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Asegurar que los videos y iframes sean responsivos */
+iframe, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mejorar la legibilidad del texto seleccionado */
+::selection {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+}
+
+::-moz-selection {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+}
+
+/* Estilos para imágenes responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Clases de utilidad adicionales */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}

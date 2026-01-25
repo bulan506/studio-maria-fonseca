@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Ana Rodríguez",
+    "service": "Alisado Orgánico",
+    "text": "Mi cabello nunca se había sentido tan saludable después de un alisado. ¡María es magia!",
+    "rating": 5,
+    "date": "2024-11-15"
+  },
+  {
+    "id": 2,
+    "name": "Carlos Sánchez",
+    "service": "Tratamiento de Células Madre",
+    "text": "Después de años de caída de cabello, este tratamiento me devolvió la confianza. Increíble.",
+    "rating": 5,
+    "date": "2024-10-22"
+  },
+  {
+    "id": 3,
+    "name": "Laura Martínez",
+    "service": "Corte de Puntas",
+    "text": "El mejor corte que me han hecho. Entiende exactamente lo que necesita mi tipo de cabello.",
+    "rating": 5,
+    "date": "2024-09-10"
+  }
+]

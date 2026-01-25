@@ -1,0 +1,41 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+  /* Color Palette */
+  --color-primary: #3A2E25;
+  --color-secondary: #A3754E;
+  --color-light: #F5F1EB;
+  --color-text-light: #F7F3EE;
+  --color-text-dark: #2E241D;
+  --color-overlay: rgba(58, 46, 37, 0.92);
+  --color-shadow: rgba(0, 0, 0, 0.25);
+  
+  /* Typography */
+  --font-script: 'Dancing Script', cursive;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-subheading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 8rem;
+  
+  /* Transitions */
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.3s ease;
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Effects */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 40px rgba(163, 117, 78, 0.15);
+  
+  /* Mobile Optimization */
+  --touch-min: 44px;
+  --input-height: 52px;
+  --button-height: 56px;
+}

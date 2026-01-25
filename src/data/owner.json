@@ -1,0 +1,28 @@
+{
+  "name": "María Fonseca",
+  "title": "Especialista en tratamientos capilares y alisados",
+  "tagline": "Conoce a",
+  "quote": "\"Mi pasión es realzar la belleza única de cada persona con tratamientos que respetan y potencian su esencia natural.\"",
+  "description": "Con más de 1+ año de experiencia en el mundo de tratamientos capilares y alisados, María Fonseca se ha especializado en técnicas y tratamientos modernos. Su formación la mantienen a la cabeza de las últimas tendencias, combinando tradición e innovación en cada tratamiento.",
+  "image": "/assets/images/maria.jpg",
+  "stats": [
+    {
+      "number": 1,
+      "label": "Año de Experiencia",
+      "suffix": "+"
+    },
+    {
+      "number": 200,
+      "label": "Clientas Felices",
+      "suffix": "+"
+    },
+    {
+      "number": 2,
+      "label": "Certificaciones",
+      "suffix": "+"
+    }
+  ],
+  "certifications": [
+    "Estudio de belleza BLESS"
+  ]
+}

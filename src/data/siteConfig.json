@@ -1,0 +1,51 @@
+{
+  "studioName": "Studio María Fonseca",
+  "slogan": "Belleza con tratamientos de.",
+  "contact": {
+    "phone": "+506 6480 9635",
+    "whatsapp": "+506 6480 9635",
+    "email": "info@studiomariafonseca.com",
+    "address": "San José, Costa Rica",
+    "location": "Barrio Escalante, 200m norte del Parque",
+    "hours": "Lunes a Sábado: 9AM - 7PM"
+  },
+  "socialMedia": {
+    "instagram": "https://instagram.com/studiomariafonseca",
+    "facebook": "https://facebook.com/studiomariafonseca",
+    "whatsapp": "https://wa.me/50664809635"
+  },
+  "hero": {
+    "title": "Studio María Fonseca",
+    "subtitle": "Tratamientos y productos premium en un ambiente diseñado para realzar tu belleza",
+    "ctaText": "Reservar cita ahora",
+    "backgroundImage": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600"
+  },
+  "sections": {
+    "services": {
+      "tagline": "Nuestros",
+      "title": "SERVICIOS",
+      "subtitle": "Descubre nuestra gama exclusiva de tratamientos capilares"
+    },
+    "owner": {
+      "tagline": "Conoce a",
+      "title": "MARÍA FONSECA"
+    },
+    "booking": {
+      "tagline": "Reserva tu",
+      "title": "CITA HOY",
+      "subtitle": "Completa el formulario y te contactaremos para confirmar"
+    }
+  },
+  "booking": {
+    "blockedDates": [
+      "2024-12-25",
+      "2025-01-01",
+      "2025-04-17",
+      "2025-04-18",
+      "2025-04-19"
+    ],
+    "blockedDays": [0],
+    "minDaysNotice": 1,
+    "maxDaysInFuture": 90
+  }
+}
