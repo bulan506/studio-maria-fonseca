@@ -1183,21 +1183,20 @@ export default function BookingForm() {
         notas: formData.notas.trim(),
       };
 
-      const username = "bam";
-      const password = "1234BamBamBam1234";
+      const username = import.meta.env.VITE_API_USERNAME;
+      const password = import.meta.env.VITE_API_PASSWORD;
+      const apiUrl = import.meta.env.VITE_API_URL;
+
       const authHeader = "Basic " + btoa(username + ":" + password);
 
-      const response = await fetch(
-        "https://n8n-biosalud.onrender.com/webhook/new-appointment",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: authHeader,
-          },
-          body: JSON.stringify(bookingData),
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authHeader,
         },
-      );
+        body: JSON.stringify(bookingData),
+      });
 
       const responseData = await response.json();
 

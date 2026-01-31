@@ -1,0 +1,4 @@
+# .env.example
+VITE_API_USERNAME=your_username
+VITE_API_PASSWORD=your_password
+VITE_API_URL=your_api_url
