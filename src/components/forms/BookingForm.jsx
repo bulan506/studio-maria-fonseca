@@ -12,6 +12,8 @@ import {
   faTimes,
   faCalendarCheck,
   faPhone,
+  faClock,
+  faCalendarXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Importar Flatpickr y sus estilos
@@ -527,6 +529,494 @@ function SuccessModal({ isOpen, onClose, bookingData }) {
   return createPortal(modalContent, document.body);
 }
 
+// Modal de error para horario no disponible
+function ErrorModal({ isOpen, onClose, errorData }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const modalContent = (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 999999,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "16px",
+      }}
+    >
+      {/* Overlay */}
+      <div
+        onClick={onClose}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.75)",
+          backdropFilter: "blur(8px)",
+          animation: "modalFadeIn 0.3s ease-out",
+        }}
+      />
+
+      {/* Modal */}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "relative",
+          background: "linear-gradient(to bottom right, #2a231d, #1a1410)",
+          borderRadius: "24px",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+          maxWidth: "448px",
+          width: "100%",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          border: "1px solid rgba(220, 38, 38, 0.3)",
+          animation: "modalScaleIn 0.3s ease-out",
+        }}
+      >
+        {/* Botón cerrar */}
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "16px",
+            right: "16px",
+            background: "transparent",
+            border: "none",
+            color: "rgba(255, 255, 255, 0.6)",
+            cursor: "pointer",
+            fontSize: "20px",
+            zIndex: 10,
+            transition: "color 0.2s",
+          }}
+          onMouseEnter={(e) =>
+            (e.target.style.color = "rgba(255, 255, 255, 1)")
+          }
+          onMouseLeave={(e) =>
+            (e.target.style.color = "rgba(255, 255, 255, 0.6)")
+          }
+          aria-label="Cerrar"
+        >
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+
+        {/* Contenido */}
+        <div style={{ padding: "32px", textAlign: "center" }}>
+          {/* Icono de error con animación */}
+          <div style={{ marginBottom: "24px", position: "relative" }}>
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "rgba(220, 38, 38, 0.2)",
+                borderRadius: "50%",
+                filter: "blur(32px)",
+                animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              }}
+            />
+            <div
+              style={{
+                position: "relative",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "80px",
+                height: "80px",
+                background:
+                  "linear-gradient(to bottom right, #dc2626, #b91c1c)",
+                borderRadius: "50%",
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.3)",
+                animation:
+                  "modalBounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faExclamationCircle}
+                style={{ fontSize: "36px", color: "white" }}
+              />
+            </div>
+          </div>
+
+          {/* Título */}
+          <h3
+            style={{
+              fontSize: "30px",
+              fontWeight: "bold",
+              color: "white",
+              marginBottom: "12px",
+              lineHeight: 1.2,
+            }}
+          >
+            Horario no disponible
+          </h3>
+
+          {/* Descripción */}
+          <p
+            style={{
+              color: "rgba(255, 255, 255, 0.8)",
+              marginBottom: "24px",
+              fontSize: "18px",
+              lineHeight: 1.5,
+            }}
+          >
+            El horario que seleccionaste ya está reservado.
+          </p>
+
+          {/* Detalles del error */}
+          {errorData && (
+            <div
+              style={{
+                background: "rgba(255, 255, 255, 0.05)",
+                backdropFilter: "blur(16px)",
+                borderRadius: "16px",
+                padding: "24px",
+                marginBottom: "24px",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                {/* Fecha */}
+                {errorData.fecha && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      textAlign: "left",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCalendarXmark}
+                      style={{ color: "#dc2626", fontSize: "16px" }}
+                    />
+                    <div>
+                      <p
+                        style={{
+                          color: "rgba(255, 255, 255, 0.6)",
+                          fontSize: "14px",
+                          margin: 0,
+                        }}
+                      >
+                        Fecha
+                      </p>
+                      <p
+                        style={{
+                          color: "white",
+                          fontWeight: "500",
+                          margin: "4px 0 0 0",
+                        }}
+                      >
+                        {errorData.fecha}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Horario solicitado */}
+                {errorData.horario_solicitado && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      textAlign: "left",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faClock}
+                      style={{ color: "#dc2626", fontSize: "16px" }}
+                    />
+                    <div>
+                      <p
+                        style={{
+                          color: "rgba(255, 255, 255, 0.6)",
+                          fontSize: "14px",
+                          margin: 0,
+                        }}
+                      >
+                        Horario solicitado
+                      </p>
+                      <p
+                        style={{
+                          color: "white",
+                          fontWeight: "500",
+                          margin: "4px 0 0 0",
+                        }}
+                      >
+                        {errorData.horario_solicitado.inicio} -{" "}
+                        {errorData.horario_solicitado.fin}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Servicio */}
+                {errorData.servicio && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      textAlign: "left",
+                    }}
+                  >
+                    <span style={{ fontSize: "18px" }}>✨</span>
+                    <div>
+                      <p
+                        style={{
+                          color: "rgba(255, 255, 255, 0.6)",
+                          fontSize: "14px",
+                          margin: 0,
+                        }}
+                      >
+                        Servicio
+                      </p>
+                      <p
+                        style={{
+                          color: "white",
+                          fontWeight: "500",
+                          margin: "4px 0 0 0",
+                        }}
+                      >
+                        {errorData.servicio}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Mensaje principal */}
+              <div
+                style={{
+                  marginTop: "16px",
+                  padding: "12px",
+                  backgroundColor: "rgba(220, 38, 38, 0.1)",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(220, 38, 38, 0.2)",
+                }}
+              >
+                <p
+                  style={{
+                    color: "rgba(255, 255, 255, 0.9)",
+                    fontSize: "15px",
+                    lineHeight: 1.5,
+                    margin: 0,
+                  }}
+                >
+                  Por favor, selecciona otra fecha u horario disponible.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Sugerencias */}
+          <div
+            style={{
+              textAlign: "left",
+              marginBottom: "24px",
+              padding: "16px",
+              backgroundColor: "rgba(212, 165, 116, 0.1)",
+              borderRadius: "12px",
+              border: "1px solid rgba(212, 165, 116, 0.2)",
+            }}
+          >
+            <p
+              style={{
+                color: "#d4a574",
+                fontWeight: "600",
+                fontSize: "16px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <span>💡</span> ¿Qué puedes hacer?
+            </p>
+            <ul
+              style={{
+                color: "rgba(255, 255, 255, 0.8)",
+                fontSize: "14px",
+                lineHeight: 1.6,
+                paddingLeft: "20px",
+                margin: 0,
+              }}
+            >
+              <li style={{ marginBottom: "8px" }}>
+                <span style={{ color: "#d4a574" }}>•</span> Intenta seleccionar
+                una franja horaria diferente
+              </li>
+              <li style={{ marginBottom: "8px" }}>
+                <span style={{ color: "#d4a574" }}>•</span> Prueba con otra
+                fecha disponible en el calendario
+              </li>
+              <li>
+                <span style={{ color: "#d4a574" }}>•</span> O llámanos para
+                coordinar una cita especial
+              </li>
+            </ul>
+          </div>
+
+          {/* Botón de acción */}
+          <button
+            onClick={onClose}
+            style={{
+              width: "100%",
+              background: "linear-gradient(to right, #d4a574, #c4955f)",
+              color: "white",
+              fontWeight: "600",
+              padding: "16px 24px",
+              borderRadius: "12px",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "16px",
+              transition: "all 0.3s",
+              marginBottom: "16px",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = "scale(1.05)";
+              e.target.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = "scale(1)";
+              e.target.style.boxShadow = "none";
+            }}
+          >
+            Seleccionar otro horario
+          </button>
+
+          {/* Botón secundario para llamar */}
+          <button
+            onClick={() => {
+              const phoneNumber = "+50664809635"; // Puedes hacer esto dinámico
+              window.location.href = `tel:${phoneNumber}`;
+            }}
+            style={{
+              width: "100%",
+              background: "transparent",
+              color: "#d4a574",
+              fontWeight: "600",
+              padding: "14px 24px",
+              borderRadius: "12px",
+              border: "2px solid #d4a574",
+              cursor: "pointer",
+              fontSize: "16px",
+              transition: "all 0.3s",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "rgba(212, 165, 116, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "transparent";
+            }}
+          >
+            <FontAwesomeIcon icon={faPhone} style={{ marginRight: "8px" }} />
+            Llamar para asistencia
+          </button>
+        </div>
+
+        {/* Decoración */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "128px",
+            height: "128px",
+            background: "rgba(212, 165, 116, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(48px)",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            width: "128px",
+            height: "128px",
+            background: "rgba(220, 38, 38, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(48px)",
+            transform: "translate(50%, 50%)",
+          }}
+        />
+      </div>
+
+      {/* Estilos de animación */}
+      <style>{`
+        @keyframes modalFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes modalScaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes modalBounceIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.3);
+          }
+          50% {
+            transform: scale(1.05);
+          }
+          70% {
+            transform: scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+      `}</style>
+    </div>
+  );
+
+  // Usar createPortal para renderizar en document.body
+  return createPortal(modalContent, document.body);
+}
+
 export default function BookingForm() {
   // Obtener configuración del sitio desde Context
   const {
@@ -552,7 +1042,9 @@ export default function BookingForm() {
   const [message, setMessage] = useState({ type: "", text: "" });
   const [selectedDate, setSelectedDate] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const [modalData, setModalData] = useState(null);
+  const [errorData, setErrorData] = useState(null);
 
   const services =
     servicesFromSheet && servicesFromSheet.length > 0
@@ -641,6 +1133,7 @@ export default function BookingForm() {
     return true;
   };
 
+  // Actualiza la función handleSubmit para manejar el error específico
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -650,29 +1143,114 @@ export default function BookingForm() {
     setMessage({ type: "", text: "" });
 
     try {
-      // Simular envío a API
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
       const selectedService = services.find(
         (s) => s.id === parseInt(formData.servicio),
       );
 
-      // Guardar TODOS los datos para el modal
-      const serviceName =
-        services.find((s) => s.id === parseInt(formData.servicio))?.name || "";
-      setModalData({
-        nombre: formData.nombre,
-        telefono: formData.telefono,
-        servicio: serviceName,
+      // Convertir hora AM/PM a formato 24 horas
+      const convertTo24Hour = (timeStr) => {
+        const [time, modifier] = timeStr.split(" ");
+        let [hours, minutes] = time.split(":");
+
+        if (modifier === "PM" && hours !== "12") {
+          hours = parseInt(hours, 10) + 12;
+        }
+        if (modifier === "AM" && hours === "12") {
+          hours = "00";
+        }
+
+        // Asegurar 2 dígitos
+        hours = hours.toString().padStart(2, "0");
+        minutes = minutes || "00";
+
+        return `${hours}:${minutes}`;
+      };
+
+      // Convertir la franja seleccionada
+      const [startTimeStr, endTimeStr] = formData.franja.split(" - ");
+      const startTime24 = convertTo24Hour(startTimeStr);
+      const endTime24 = convertTo24Hour(endTimeStr);
+
+      const bookingData = {
+        nombre: formData.nombre.trim(),
+        telefono: formData.telefono.trim(),
+        servicio: selectedService?.name || "",
+        franja: [
+          `${formData.fecha}T${startTime24}:00-06:00`,
+          `${formData.fecha}T${endTime24}:00-06:00`,
+        ],
         fecha: formData.fecha,
-        franja: formData.franja,
-        notas: formData.notas,
-      });
+        notas: formData.notas.trim(),
+      };
 
-      // Mostrar modal de éxito
-      setShowSuccessModal(true);
+      const username = "bam";
+      const password = "1234BamBamBam1234";
+      const authHeader = "Basic " + btoa(username + ":" + password);
 
-      // Reset form
+      const response = await fetch(
+        "https://n8n-biosalud.onrender.com/webhook/new-appointment",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: authHeader,
+          },
+          body: JSON.stringify(bookingData),
+        },
+      );
+
+      const responseData = await response.json();
+
+      // Verificar si hubo error en la respuesta
+      if (!response.ok || responseData.success === false) {
+        // Manejar error específico de horario no disponible
+        if (
+          responseData.error === "Horario no disponible" ||
+          responseData.message === "Horario no disponible"
+        ) {
+          // Formatear la fecha para mostrarla mejor
+          const fecha = new Date(responseData.data.fecha);
+          const fechaFormateada = fecha.toLocaleDateString("es-ES", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+
+          // Preparar los datos para el modal de error
+          const errorDataForModal = {
+            ...responseData.data,
+            fecha: fechaFormateada,
+            servicio: selectedService?.name || responseData.data.servicio,
+          };
+
+          // Guardar los datos del error y mostrar modal
+          setErrorData(errorDataForModal);
+          setShowErrorModal(true);
+
+          // También podemos limpiar el formulario o mantenerlo
+          setFormData((prev) => ({
+            ...prev,
+            franja: "", // Limpiar solo el horario
+          }));
+
+          return; // Salir de la función para no mostrar el mensaje inline
+        } else {
+          throw new Error(responseData.message || "Error al enviar la reserva");
+        }
+      }
+
+      // SI LLEGA AQUÍ, ES PORQUE LA RESPUESTA FUE EXITOSA (200)
+      console.log("Respuesta exitosa:", responseData);
+
+      // Preparar los datos para el modal (agregar la franja formateada)
+      const modalDataToShow = {
+        ...bookingData,
+        franja: formData.franja, // Usar la franja original formateada AM/PM
+        servicio: selectedService?.name || formData.servicio,
+      };
+
+      // Resetear el formulario ANTES de mostrar el modal
       setFormData({
         nombre: "",
         telefono: "",
@@ -682,12 +1260,22 @@ export default function BookingForm() {
         notas: "",
       });
       setSelectedDate("");
+      setMessage({ type: "", text: "" });
+
+      // Mostrar el modal de éxito
+      setModalData(modalDataToShow);
+      setShowSuccessModal(true);
     } catch (error) {
       console.error("Error:", error);
-      setMessage({
-        type: "error",
-        text: "Error al enviar la reserva. Por favor, intenta de nuevo o contáctanos directamente.",
-      });
+
+      // Solo mostrar mensaje inline si no es el error de horario no disponible
+      // (ese ya se maneja con el modal)
+      if (!error.message.includes("Horario no disponible")) {
+        setMessage({
+          type: "error",
+          text: error.message,
+        });
+      }
     } finally {
       setSubmitting(false);
     }
@@ -954,15 +1542,22 @@ export default function BookingForm() {
                   </button>
                 </div>
 
-                {/* Mensaje de error (solo para errores) */}
+                {/* Mensaje de error/success - SOLO para errores generales */}
                 {message.text && message.type === "error" && (
-                  <div className="mt-6 p-4 rounded-xl transition-all duration-300 bg-red-900/30 text-red-300 border border-red-700/30">
-                    <div className="flex items-center gap-3">
+                  <div className="mt-6 p-4 rounded-xl transition-all duration-300 bg-red-900/30 text-red-100 border border-red-700/30">
+                    <div className="flex items-start gap-3">
                       <FontAwesomeIcon
                         icon={faExclamationCircle}
-                        className="text-red-400"
+                        className="mt-1 flex-shrink-0 text-red-400"
                       />
-                      <span>{message.text}</span>
+                      <div className="flex-1">
+                        <div
+                          className="whitespace-pre-line leading-relaxed"
+                          style={{ lineHeight: "1.6" }}
+                        >
+                          {message.text}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -985,11 +1580,18 @@ export default function BookingForm() {
         </div>
       </section>
 
-      {/* Modal de éxito usando Portal - Se renderiza en document.body */}
+      {/* Modal de éxito */}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
         bookingData={modalData}
+      />
+
+      {/* Modal de error para horario no disponible */}
+      <ErrorModal
+        isOpen={showErrorModal}
+        onClose={() => setShowErrorModal(false)}
+        errorData={errorData}
       />
     </>
   );

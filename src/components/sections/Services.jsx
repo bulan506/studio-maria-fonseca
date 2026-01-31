@@ -47,9 +47,7 @@ export default function Services() {
             </p>
           </div>
           <div className="error-container">
-            <p className="error-message">
-              ⚠️ No se pudieron cargar los servicios
-            </p>
+            <p className="error-message">No se pudieron cargar los servicios</p>
             <p className="error-note">Por favor intenta recargar la página</p>
           </div>
         </div>

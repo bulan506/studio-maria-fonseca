@@ -29,7 +29,6 @@ export default function Footer() {
     );
   }
 
-  // 2. SI HAY ERROR - mostrar error
   if (error?.config || error?.services) {
     return (
       <footer className="footer" id="contacto">
@@ -42,7 +41,6 @@ export default function Footer() {
   }
 
   if (!config) {
-    console.log("⚠️ Footer: config es null/undefined pero loading=false");
     return (
       <footer className="footer" id="contacto">
         <div className="container">
@@ -70,15 +68,7 @@ export default function Footer() {
               >
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a
-                href={config.socialMedia.facebook}
-                className="social-link"
-                aria-label="Facebook"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
+
               <a
                 href={config.socialMedia.whatsapp}
                 className="social-link"
@@ -138,11 +128,6 @@ export default function Footer() {
               <li>
                 <a href="#reservar" className="footer-link">
                   Reservar cita
-                </a>
-              </li>
-              <li>
-                <a href="#" className="footer-link">
-                  Política de privacidad
                 </a>
               </li>
             </ul>

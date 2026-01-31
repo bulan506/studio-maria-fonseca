@@ -112,7 +112,12 @@ export default function ServiceCard({ service, delay = 0 }) {
           </div>
           <div className="meta-item price-mobile">
             <span className="service-price">
-              {service.price || "Consultar precio"}
+              {priceRange.min > 0
+                ? `₡${priceRange.min.toLocaleString()}` +
+                  (priceRange.max > priceRange.min
+                    ? ` - ₡${priceRange.max.toLocaleString()}`
+                    : "")
+                : service.price || "Consultar precio"}{" "}
             </span>
           </div>
         </div>
@@ -124,7 +129,14 @@ export default function ServiceCard({ service, delay = 0 }) {
           </div>
 
           <div className="service-price-container">
-            <div className="service-price">{service.price || "Consultar"}</div>
+            <div className="service-price">
+              {priceRange.min > 0
+                ? `₡${priceRange.min.toLocaleString()}` +
+                  (priceRange.max > priceRange.min
+                    ? ` - ₡${priceRange.max.toLocaleString()}`
+                    : "")
+                : service.price || "Consultar"}
+            </div>
             <div className="price-note">Varía según longitud</div>
           </div>
         </div>
